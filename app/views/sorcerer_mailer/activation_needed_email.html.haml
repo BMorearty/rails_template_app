@@ -1,0 +1,4 @@
+%p Hi, #{@user.name.presence || @user.email}. Use this link to confirm your email address for RailsTemplateApp.
+%h1!= link_to "Confirm your email", @activation_url
+-# Without this &nbsp, "Confirm your email" is cut off in the GMail web client for iPhone
+%p &nbsp;

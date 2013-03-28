@@ -1,0 +1,18 @@
+.body_user_sessions_new {
+  #remember_me label {
+    display: inline;
+  }
+
+  .actions {
+    margin-top: 0.5em;
+    margin-bottom: 2em;
+  }
+
+  #forgot_password {
+    margin-left: 20px;
+  }
+
+  #reset_password {
+    display: none;
+  }
+}

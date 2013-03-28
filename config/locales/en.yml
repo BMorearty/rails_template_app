@@ -1,0 +1,50 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+  time:
+    formats:
+      long_date: "%a %b %d, %Y" # Thu Mar 29, 2012
+  activerecord:
+    errors:
+      models:
+        model_name:
+          attributes:
+            attr_name:
+  helpers:
+    actions: "Actions"
+    links:
+      back: "Back"
+      cancel: "Cancel"
+      change_password: "Change password"
+      destroy: "Destroy"
+      edit: "Edit"
+      new: "New"
+      sign_up: "Sign up"
+      save: "Save"
+    titles:
+      edit: "Edit %{model}"
+  user_sessions:
+    new:
+      title: "Login"
+      forgot: "Forgot password"
+  users:
+    new:
+      account_created: "Account created. You will receive a confirmation email Real Soon Now."
+      could_not_login: "Internal error: account was created but we were unable to log you in."
+    password_fields:
+      old_password: "Your old password"
+      old_password_placeholder: "Old password here"
+      new_password_placeholder: "New password here"
+      retype_password: "Retype password"
+      retype_password_placeholder: "New password again"
+      new_password: "Pick a %{new}password"
+    form:
+      change_password: "change your password"
+    edit_password:
+      title: "Change your password"
+    update:
+      changed_password: "Password was successfully changed."
+      changed: "Account settings were successfully changed."
+    confirm_email:
+      confirmed: "You are awesome. Your email is confirmed."

@@ -1,0 +1,26 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: railstemplateapp_development
+  pool: 5
+  username: railstemplateapp
+  password:
+  template: template0 # Required for UTF8 encoding
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: railstemplateapp_test
+  pool: 5
+  username: railstemplateapp
+  password:
+  template: template0 # Required for UTF8 encoding
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: railstemplateapp_production
+  pool: 5
+  username: railstemplateapp
+  password:
+  template: template0 # Required for UTF8 encoding

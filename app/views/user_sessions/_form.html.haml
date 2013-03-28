@@ -1,0 +1,17 @@
+= form_tag user_sessions_path, class: 'form-horizontal', :method => :post do
+  .control-group
+    = label_tag :email, nil, class: 'control-label'
+    .controls
+      = text_field_tag :email, params[:email], class: 'text-field', autofocus: 'autofocus'
+  .control-group
+    = label_tag :password, nil, class: 'control-label'
+    .controls
+      = password_field_tag :password, nil, class: 'text-field'
+  .control-group
+    .controls
+      %div#remember_me
+        = check_box_tag(:remember)
+        = label_tag :remember, "Keep me logged in"
+  .form-actions
+    = submit_tag "Login", class: 'btn btn-primary'
+    = link_to t('.forgot', default: 'Forgot password'), 'javascript:;', id: 'forgot_password'

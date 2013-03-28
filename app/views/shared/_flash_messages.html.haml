@@ -1,0 +1,3 @@
+- flash.each do |type, message|
+  %div.alert.alert-message.fade.in{ "data-alert" => "alert", :class => twitterized(type) }
+    = message
