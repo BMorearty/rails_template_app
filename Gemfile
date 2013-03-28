@@ -17,8 +17,10 @@ gem 'jbuilder'
 gem 'dalli'
 gem 'thin'
 gem 'roadie'
-gem 'rack-mini-profiler'
+#gem 'rack-mini-profiler' - disable for now, since it prevents Rack::ConditionalGet from returning 304 Not Changed.
 gem 'resque_mail_queue'
+gem 'turbolinks'
+gem 'jquery-turbolinks'
 
 # Gems used only for assets and not required
 # in production environments by default.

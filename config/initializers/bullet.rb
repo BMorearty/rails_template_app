@@ -5,5 +5,4 @@ if defined? Bullet
   Bullet.console = true
   Bullet.growl = false
   Bullet.rails_logger = true
-  Bullet.disable_browser_cache = true
 end

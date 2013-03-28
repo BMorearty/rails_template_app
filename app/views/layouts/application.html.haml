@@ -7,11 +7,12 @@
     %meta{name: 'Description', content: 'TODO: describe RailsTemplateApp'}
     %meta{property: 'og:description', content: 'TODO: describe RailsTemplateApp'}
     -#%meta{property: 'og:image', content: "http://www.railstemplateapp.com#{image_path('screenshot.png')}"}
-    = stylesheet_link_tag 'application', media: 'all'
+    = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
     :javascript
       RailsTemplateApp = {};
     /[if lt IE 9]
       = javascript_include_tag '//html5shiv.googlecode.com/svn/trunk/html5.js', type: 'text/javascript'
+    = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
     %meta{ name: 'viewport', content: 'width=device-width, initial-scale=1.0' }
 %body{ class: "body_#{controller_name} body_#{controller_name}_#{params[:action]}" }
@@ -40,7 +41,6 @@
             %li#login= link_to "Login", login_path
         -#.nav-collapse
           -# put stuff in here that you want collapsed under 940px
-  = javascript_include_tag 'application'
   .container
     .row
       .span12

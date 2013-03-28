@@ -12,9 +12,11 @@
 #
 #= require jquery
 #= require jquery_ujs
+#= require jquery.turbolinks
 #= require twitter/bootstrap
 #= require jquery.fittext
 #= require_tree .
+#= require turbolinks
 
 showUserLinks = ->
   email = Cookie.get('email')

@@ -1,4 +1,4 @@
 require "spec_helper"
 
-describe UserActivationMailer do
+describe SorcererMailer do
 end
