@@ -51,6 +51,7 @@ group :development do
   gem 'sextant'
   gem 'rails-footnotes'
   gem 'bullet'
+  gem 'better_errors'
 end
 
 group :test do

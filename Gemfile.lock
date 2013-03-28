@@ -33,6 +33,9 @@ GEM
     arel (3.0.2)
     awesome_print (1.0.2)
     bcrypt-ruby (3.0.1)
+    better_errors (0.7.2)
+      coderay (>= 1.0.0)
+      erubis (>= 2.6.6)
     blankslate (2.1.2.4)
     builder (3.0.4)
     bullet (4.1.6)
@@ -278,6 +281,7 @@ DEPENDENCIES
   andand
   awesome_print
   bcrypt-ruby (~> 3.0.0)
+  better_errors
   bullet
   capybara
   coffee-rails (~> 3.2.1)
