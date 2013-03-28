@@ -69,9 +69,9 @@ def maybe_rename_file(filename)
 end
 
 def rename_app_in_file(filename)
-  print `sed -i '' 's/RailsTemplateApp/#{app_name_camelcase}/g' #{filename}`
-  print `sed -i '' 's/rails_template_app/#{app_name}/g' #{filename}`
-  print `sed -i '' 's/railstemplateapp/#{app_name_no_underscores}/g' #{filename}`
+  print `LANG=C sed -i '' 's/RailsTemplateApp/#{app_name_camelcase}/g' #{filename}`
+  print `LANG=C sed -i '' 's/rails_template_app/#{app_name}/g' #{filename}`
+  print `LANG=C sed -i '' 's/railstemplateapp/#{app_name_no_underscores}/g' #{filename}`
 end
 
 def rename_app_in_dir(dir)
