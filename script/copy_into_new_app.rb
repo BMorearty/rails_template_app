@@ -99,7 +99,7 @@ end
 
 def create_db_user
   say "Creating DB user"
-  print `psql template1 -c 'create role #{app_name_no_underscores} createdb login'`
+  print `psql -U brian template1 -c 'create role #{app_name_no_underscores} createdb login'`
 end
 
 def bundle
