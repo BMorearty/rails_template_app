@@ -1,2 +1,2 @@
-web:           bundle exec unicorn -p $PORT -c ./config/unicorn/unicorn_$RACK_ENV.rb
+web:           bundle exec thin start -p $PORT -e $RACK_ENV
 worker:        env QUEUE=alerts bundle exec rake environment resque:work
