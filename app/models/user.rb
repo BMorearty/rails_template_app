@@ -1,8 +1,6 @@
 class User < ActiveRecord::Base
   authenticates_with_sorcery!
 
-  attr_accessible :name, :email, :old_password, :password, :password_confirmation
-
   attr_writer :old_password
 
   ROLES = %w( guest registered admin )

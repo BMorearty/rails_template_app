@@ -40,7 +40,7 @@ class UsersController < ApplicationController
   # PUT /users/1
   # PUT /users/1/update_password
   def update
-    if @user.update_attributes(params[:user].except(:role))
+    if @user.update_attributes(user_params)
       notice = params[:edit_password] ? t('users.update.changed_password') : t('users.update.changed')
       redirect_to @user, notice: notice
     else
@@ -77,12 +77,17 @@ class UsersController < ApplicationController
   end
 
   def new_user
-    @user ||= User.new(params[:user].except(:role)) if params[:user]
+    @user ||= User.new(user_params) if params[:user]
     @user ||= User.new
   end
 
   def find_users
     @users ||= User.scoped
+  end
+
+  def user_params
+    # TODO: only allow user to update his own params
+    params.require(:user).permit(:name, :email, :old_password, :password, :password_confirmation)
   end
 
 end
