@@ -32,6 +32,7 @@ gem 'twitter-bootstrap-rails'
 gem 'sdoc'
 
 group :development, :test do
+  gem 'byebug'
   gem 'pry'
   gem 'pry-rails'
   gem 'pry-remote'

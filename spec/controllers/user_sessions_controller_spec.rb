@@ -1,11 +1,11 @@
 require 'spec_helper'
 
-describe UserSessionsController do
+describe UserSessionsController, type: :controller do
 
   describe "GET 'new' (/login)" do
     it "returns http success" do
       get :new
-      response.should be_success
+      expect(response).to be_success
     end
   end
 

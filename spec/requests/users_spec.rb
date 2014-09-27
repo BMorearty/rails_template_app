@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "Users" do
+describe "Users", type: :request do
   context "not logged in" do
 
   end

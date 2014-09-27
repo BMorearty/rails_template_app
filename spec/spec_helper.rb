@@ -4,7 +4,6 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
 require 'factory_girl'
-require 'factory_girl/syntax/generate'
 
 module Benchmark
   class Tms
@@ -39,12 +38,12 @@ RSpec.configure do |config|
   # rspec-rails.
   config.infer_base_class_for_anonymous_controllers = false
 
-  config.before(:each) do
+  config.before(:each) do |example|
     desc = example.full_description
     Rails.logger.debug "\n#{desc}\n#{'-' * desc.length}\n"
   end
 
-  config.before(:all) do
+  config.before(:suite) do
     DatabaseCleaner.clean_with :truncation
   end
 end

@@ -8,13 +8,13 @@ FactoryGirl.define do
   end
 
   factory :activated_user, parent: :new_user do
-    after_build do |user|
+    after(:build) do |user|
       # Hack to make integration_login faster: prevent sending activation_needed email
       def user.external?
         true
       end
     end
-    after_create do |user|
+    after(:create) do |user|
       # Activate the user without sending an activation_success email, then restore normal behavior
       user.activate!
       class << user
