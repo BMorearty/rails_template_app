@@ -1,33 +1,44 @@
-RailsTemplateApp::Application.configure do
-  # Settings specified here will take precedence over those in config/application.rb
+Rails.application.configure do
+  # Settings specified here will take precedence over those in config/application.rb.
 
   config.rails_template_app.host = "www.railstemplateapp.com"
 
-  # Code is not reloaded between requests
+  # Code is not reloaded between requests.
   config.cache_classes = true
 
-  # Full error reports are disabled and caching is turned on
+  # Eager load code on boot. This eager loads most of Rails and
+  # your application in memory, allowing both threaded web servers
+  # and those relying on copy on write to perform better.
+  # Rake tasks automatically ignore this option for performance.
+  config.eager_load = true
+
+  # Full error reports are disabled and caching is turned on.
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
 
-  # Disable Rails's static asset server (Apache or nginx will already do this)
+  # Enable Rack::Cache to put a simple HTTP cache in front of your application
+  # Add `rack-cache` to your Gemfile before enabling this.
+  # For large-scale production use, consider using a caching reverse proxy like nginx, varnish or squid.
+  # config.action_dispatch.rack_cache = true
+
+  # Disable Rails's static asset server (Apache or nginx will already do this).
   # https://devcenter.heroku.com/articles/rack-cache-memcached-static-assets-rails31
   config.serve_static_assets = false
   config.static_cache_control = "public, max-age=2592000"
 
-  # Compress JavaScripts and CSS
-  config.assets.compress = true
+  # Compress JavaScripts and CSS.
+  config.assets.js_compressor = :uglifier
+  # config.assets.css_compressor = :sass
 
-  # Don't fallback to assets pipeline if a precompiled asset is missed
+  # Do not fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = false
 
-  # Generate digests for assets URLs
+  # Generate digests for assets URLs.
   config.assets.digest = true
 
-  # Defaults to Rails.root.join("public/assets")
-  # config.assets.manifest = YOUR_PATH
+  # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
 
-  # Specifies the header that your server uses for sending files
+  # Specifies the header that your server uses for sending files.
   # config.action_dispatch.x_sendfile_header = "X-Sendfile" # for apache
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for nginx
 
@@ -41,13 +52,13 @@ RailsTemplateApp::Application.configure do
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
 
-  # See everything in the log (default is :info)
-  # config.log_level = :debug
+  # Set to :debug to see everything in the log.
+  config.log_level = :info
 
-  # Prepend all log lines with the following tags
+  # Prepend all log lines with the following tags.
   # config.log_tags = [ :subdomain, :uuid ]
 
-  # Use a different logger for distributed setups
+  # Use a different logger for distributed setups.
   # config.logger = ActiveSupport::TaggedLogging.new(SyslogLogger.new)
 
   # TODO: Just output straight to STDOUT if deploying to Heroku and using Unicorn.
@@ -56,14 +67,11 @@ RailsTemplateApp::Application.configure do
   # config.logger = Logger.new(STDOUT)
   # config.logger.level = Logger.const_get(ENV['LOG_LEVEL'] ? ENV['LOG_LEVEL'].upcase : 'INFO')
 
-  # Use a different cache store in production
+  # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
 
-  # Enable serving of images, stylesheets, and JavaScripts from an asset server
+  # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.action_controller.asset_host = "http://assets.example.com"
-
-  # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
-  # config.assets.precompile += %w( search.js )
 
   # Raise an error if the mailer can't send
   config.action_mailer.raise_delivery_errors = true
@@ -78,19 +86,21 @@ RailsTemplateApp::Application.configure do
     :enable_starttls_auto => true  }
   config.action_mailer.default_url_options = { :host => config.rails_template_app.host }
 
-  # Enable threaded mode
-  # config.threadsafe!
-
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
-  # the I18n.default_locale when a translation can not be found)
+  # the I18n.default_locale when a translation cannot be found).
   config.i18n.fallbacks = true
 
-  # Send deprecation notices to registered listeners
+  # Send deprecation notices to registered listeners.
   config.active_support.deprecation = :notify
 
-  # Log the query plan for queries taking more than this (works
-  # with SQLite, MySQL, and PostgreSQL)
-  # config.active_record.auto_explain_threshold_in_seconds = 0.5
+  # Disable automatic flushing of the log to improve performance.
+  # config.autoflush_log = false
+
+  # Use default logging formatter so that PID and timestamp are not suppressed.
+  config.log_formatter = ::Logger::Formatter.new
+
+  # Do not dump schema after migrations.
+  config.active_record.dump_schema_after_migration = false
 
   # BCrypt security level.  1 is fast, 10 is secure.
   config.rails_template_app.sorcery_bcrypt_cost = 10

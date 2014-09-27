@@ -1,6 +1,6 @@
 require 'resque/server'
 
-RailsTemplateApp::Application.routes.draw do
+Rails.application.routes.draw do
   resources :user_sessions
   resources :password_resets
   resources :users do
@@ -14,11 +14,13 @@ RailsTemplateApp::Application.routes.draw do
   get "confirm_email/:id/:activation_token" => "users#confirm_email", as: :confirm_user_email
 
   get 'user_sessions/new'
+  # TODO: change to POST
   get 'user_sessions/create'
+  # TODO: change to DELETE
   get 'user_sessions/destroy'
-  match 'signup' => 'users#new', as: :signup
-  match 'login' => 'user_sessions#new', as: :login
-  match 'logout' => 'user_sessions#destroy', as: :logout
+  get 'signup' => 'users#new', as: :signup
+  get 'login' => 'user_sessions#new', as: :login
+  get 'logout' => 'user_sessions#destroy', as: :logout
 
   root to: 'home#index'
 
