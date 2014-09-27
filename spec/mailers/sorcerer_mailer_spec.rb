@@ -1,4 +1,4 @@
 require "spec_helper"
 
-describe SorcererMailer do
+describe SorcererMailer, type: :mailer do
 end
