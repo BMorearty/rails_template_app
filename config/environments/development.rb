@@ -26,7 +26,8 @@ RailsTemplateApp::Application.configure do
     :password             => 'super-secret password for rails_template_app',
     :authentication       => :login,
     :enable_starttls_auto => true  }
-  config.action_mailer.default_url_options = { :host => config.rails_template_app.host }
+  config.action_mailer.default_url_options = { host: config.rails_template_app.host }
+  config.roadie.url_options = { host: config.rails_template_app.host }
 
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log

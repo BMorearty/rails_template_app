@@ -15,6 +15,7 @@ gem 'rest-client'
 gem 'jbuilder'
 gem 'dalli'
 gem 'roadie'
+gem 'roadie-rails'
 #gem 'rack-mini-profiler' - disable for now, since it prevents Rack::ConditionalGet from returning 304 Not Changed.
 gem 'resque_mail_queue'
 gem 'turbolinks'
