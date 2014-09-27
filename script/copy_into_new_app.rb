@@ -121,8 +121,8 @@ end
 
 def generate_secret
   say "Generating app secret"
-  filename = "config/initializers/secret_token.rb"
-  contents = File.read(filename).gsub('this secret token will be replaced', SecureRandom.hex(64))
+  filename = "config/secrets.yml"
+  contents = File.read(filename).gsub('this secret token will be replaced', SecureRandom.hex(128))
   File.write filename, contents
 end
 

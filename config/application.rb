@@ -21,13 +21,7 @@ module RailsTemplateApp
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
-    config.assets.enabled = true
-
-    # BMorearty make Heroku work. https://devcenter.heroku.com/articles/rails3x-asset-pipeline-cedar
-    config.assets.initialize_on_precompile = false
-
-    # Put each third-party library in its own directory under vendor/assets
-    config.assets.paths << Rails.root.join("vendor", "assets")
+    Rails.application.config.assets.enabled = true
 
     config.generators do |g|
       g.test_framework :rspec

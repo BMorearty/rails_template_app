@@ -1,4 +1,8 @@
-# Be sure to restart your server when you modify this file.
+# BMorearty make Heroku work. https://devcenter.heroku.com/articles/rails3x-asset-pipeline-cedar
+Rails.application.config.assets.initialize_on_precompile = false
+
+# Put each third-party library in its own directory under vendor/assets
+Rails.application.config.assets.paths << Rails.root.join("vendor", "assets")
 
 # Version of your assets, change this if you want to expire all your assets.
 Rails.application.config.assets.version = '1.0'
