@@ -1,0 +1,35 @@
+@import "variables";
+
+.navbar {
+  background-color: $navbarBackground;
+  height: 44px;
+
+  .brand {
+    font-weight: bold;
+    font-family: $headingsFontFamily;
+    text-shadow: white 0 1px 0;
+    padding: 8px 20px 9px;
+    margin-top: 2px;
+
+    &:hover {
+      color: $navbarLinkColorHover;
+      text-shadow: black 0 1px 0;
+      background-color: $navbarLinkBackgroundHover;
+      .border-radius: 4px;
+    }
+  }
+
+  // Dropdown caret in navbar
+  .nav li.dropdown .dropdown-toggle .caret,
+  .nav li.dropdown.open .caret {
+    border-top-color: $navbarLinkColor;
+    border-bottom-color: $navbarLinkColor;
+  }
+  .nav li.dropdown.open .caret,
+  .nav li.dropdown.open.active .caret,
+  .nav li.dropdown.open a:hover .caret {
+    border-top-color: $navbarLinkColorHover;
+    border-bottom-color: $navbarLinkColorHover;
+  }
+}
+

@@ -15,47 +15,19 @@
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
     %meta{ name: 'viewport', content: 'width=device-width, initial-scale=1.0' }
-%body{ class: "body_#{controller_name} body_#{controller_name}_#{params[:action]}" }
-  .navbar.navbar-fixed-top
-    .navbar-inner
-      .container
-        -# To have a collapsible section, restore this and the .nav-collapse block below.
-        -# Put collapsible menu items in <ul> tags inside .nav-collapse.
-        -#%a.btn.btn-navbar{ 'data-toggle' => 'collapse', 'data-target' => '.nav-collapse' }
-        -#  %span.icon-bar
-        -#  %span.icon-bar
-        -#  %span.icon-bar
-        = link_to 'RailsTemplateApp', root_path, class: 'brand'
+  %body{ class: "body_#{controller_name} body_#{controller_name}_#{params[:action]}" }
+    .navbar
+      = link_to 'RailsTemplateApp', root_path, class: 'brand'
+      #userlinks
         %ul.nav
-          -#%li= link_to "Something", some_path
-        #userlinks.pull-right
-          %ul.nav.nav-pills
-            %li#usermenu.dropdown
-              = link_to '<span id="email"></span> <b class="caret"></b>'.html_safe, '#', data: { toggle: 'dropdown' }, class: 'dropdown-toggle'
-              %ul.dropdown-menu
-                = link_to "Logout", logout_path
-            %li#signup= link_to "Sign up", signup_path
-          .orlogin.nav.nav-pills
-            %p.navbar-text or
-          %ul.orlogin.nav.nav-pills
-            %li#login= link_to "Login", login_path
-        -#.nav-collapse
-          -# put stuff in here that you want collapsed under 940px
-  .container
-    .row
-      .span12
-        =render partial: "shared/flash_messages", locals: { flash: flash }
-    .row
-      -#- if nav?
-      -#  .span3
-      -#    %ul.nav.nav-list.well
-      -#      -#%li.nav-header
-      -#      -#  Nav Header
-      -#      %li.active
-      -#        = link_to '<i class="icon-home"></i> Home'.html_safe, root_path
-      -#      %li= link_to 'Another page'
-      -#  .span9
-      -#    = yield
-      -#- else
-      .span12
-        = yield
+          %li#usermenu.dropdown
+            = link_to '<span id="email"></span> <b class="caret"></b>'.html_safe, 'javascript:;'
+            %ul.dropdown-menu
+              = link_to "Logout", logout_path
+          %li#signup= link_to "Sign up", signup_path
+        .orlogin.nav
+          %p or
+        %ul.orlogin.nav
+          %li#login= link_to "Login", login_path
+    =render partial: "shared/flash_messages", locals: { flash: flash }
+    = yield

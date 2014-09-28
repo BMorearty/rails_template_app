@@ -1,0 +1,131 @@
+// Grays
+// -------------------------
+$black:           #000;
+$grayDarker:      #222;
+$grayDark:        #333;
+$gray:            #555;
+$grayLight:       #999;
+$grayLighter:     #eee;
+$white:           #fff;
+
+
+// Accent colors
+// -------------------------
+$blue:            #049cdb;
+$blueDark:        #0064cd;
+$green:           #46a546;
+$red:             #9d261d;
+$yellow:          #ffc40d;
+$orange:          #f89406;
+$pink:            #c3325f;
+$purple:          #7a43b6;
+
+
+// Links
+// -------------------------
+$linkColor:       #08c;
+$linkColorHover:  darken($linkColor, 15%);
+
+
+// Typography
+// -------------------------
+$sansFontFamily:  Verdana, "Helvetica Neue", Helvetica, Arial, sans-serif;
+$serifFontFamily: Georgia, "Times New Roman", Times, serif;
+$monoFontFamily:  Menlo, Monaco, Consolas, "Courier New", monospace;
+
+$baseFontSize:    13px;
+$baseFontFamily:  Lato;  @import url(http://fonts.googleapis.com/css?family=Lato);
+$baseLineHeight:  18px;
+$altFontFamily:   $serifFontFamily;
+
+$headingsFontFamily:  Tahoma;
+$headingsFontWeight:  bold;
+$headingsColor:       inherit;
+
+
+// Tables
+// -------------------------
+$tableBackground:       transparent;
+$tableBackgroundAccent: #f9f9f9;
+$tableBackgroundHover:  #f5f5f5;
+$tableBorder:           #ddd;
+
+
+// Buttons
+// -------------------------
+$btnBackground:                 $white;
+$btnBackgroundHighlight:        darken($white, 10%);
+$btnBorder:                     #ccc;
+
+$btnPrimaryBackground:          $linkColor;
+$btnPrimaryBackgroundHighlight: tint($btnPrimaryBackground, 15%);
+
+$btnInfoBackground:             #5bc0de;
+$btnInfoBackgroundHighlight:    #2f96b4;
+
+$btnSuccessBackground:          #62c462;
+$btnSuccessBackgroundHighlight: #51a351;
+
+$btnWarningBackground:          lighten($orange, 15%);
+$btnWarningBackgroundHighlight: $orange;
+
+$btnDangerBackground:           #ee5f5b;
+$btnDangerBackgroundHighlight:  #bd362f;
+
+$btnInverseBackground:          $gray;
+$btnInverseBackgroundHighlight: $grayDarker;
+
+
+// Forms
+// -------------------------
+$inputBackground:               $white;
+$inputBorder:                   #ccc;
+$inputBorderRadius:             3px;
+$inputDisabledBackground:       $grayLighter;
+$formActionsBackground:         #f5f5f5;
+
+// Dropdowns
+// -------------------------
+$dropdownBackground:            $white;
+$dropdownBorder:                rgba(0,0,0,.2);
+$dropdownDividerTop:            #e5e5e5;
+$dropdownDividerBottom:         $white;
+
+$dropdownLinkColor:             $grayDark;
+
+$dropdownLinkColorHover:        $white;
+$dropdownLinkBackgroundHover:   $linkColor;
+
+$dropdownLinkColorActive:       $dropdownLinkColor;
+$dropdownLinkBackgroundActive:  $linkColor;
+
+
+// Input placeholder text color
+// -------------------------
+$placeholderText:   $grayLight;
+
+
+// Hr border color
+// -------------------------
+$hrBorder:          $grayLighter;
+
+
+// Wells
+// -------------------------
+$wellBackground:    #f5f5f5;
+
+
+// Navbar
+// -------------------------
+$navbarBackground:              #C7E76C;
+$navbarBackgroundHighlight:     $navbarBackground;
+$navbarBorder:                  darken($navbarBackground, 12%);
+
+$navbarText:                    $gray;
+$navbarLinkColor:               #458331;
+$navbarLinkColorHover:          $white;
+$navbarLinkColorActive:         $navbarLinkColorHover;
+$navbarLinkBackgroundHover:     #84BC3A;
+$navbarLinkBackgroundActive:    $navbarLinkBackgroundHover;
+
+$navbarBrandColor:              #458331;

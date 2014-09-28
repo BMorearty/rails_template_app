@@ -1,10 +1,10 @@
-= form_for @user, html: { class: "form-horizontal #{@user.new_record? ? 'new_user' : 'edit_user' }" } do |f|
+= form_for @user do |f|
   = render partial: 'shared/form_errors', locals: { model: @user }
   = render partial: 'normal_fields', locals: { f: f }
   - if @user.new_record?
     = render partial: 'password_fields', locals: { f: f }
   .form-actions
-    = f.submit edit_user_submit_text(@user), class: 'btn btn-primary'
+    = f.submit edit_user_submit_text(@user)
     - if @user.persisted?
       %span#change_password
         or
