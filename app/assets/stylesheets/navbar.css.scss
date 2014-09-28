@@ -40,6 +40,12 @@
     }
   }
 
+  > ul {
+    float: right;
+    padding: 12px 20px 12px 0;
+    margin-right: 20px;
+  }
+
   a {
     color: $navbarLinkColor;
     padding: 3px;

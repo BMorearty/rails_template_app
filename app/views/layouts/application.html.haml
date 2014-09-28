@@ -19,11 +19,9 @@
     .navbar
       = link_to 'RailsTemplateApp', root_path, class: 'brand'
       %ul
-        %li#usermenu.dropdown
-          %a{ href: "javascript:;"}
-            %span#email
-          %ul.dropdown-menu
-            %li= link_to "Logout", logout_path
+        %li#usermenu
+          %span#email
+          = link_to "Logout", logout_path
         %li#signup= link_to "Sign up", signup_path
         %li.orlogin or
         %li#login= link_to "Login", login_path

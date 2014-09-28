@@ -20,7 +20,6 @@
 showUserLinks = ->
   email = Cookie.get('email')
   if email
-    console.log email
     email = decodeURIComponent(email.replace('+',' '))
     $('#email').text(email)
     $('#signup, .orlogin, #login').hide()
