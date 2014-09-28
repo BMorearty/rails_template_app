@@ -12,8 +12,18 @@
  *= require_tree .
  */
 
+@import "variables";
+
 body {
   overflow-y: scroll;
+  padding-top: 60px;
+  font-family: $baseFontFamily;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $headingsFontFamily;
+  font-weight: $headingsFontWeight;
+  color: $headingsColor;
 }
 
 #userlinks {

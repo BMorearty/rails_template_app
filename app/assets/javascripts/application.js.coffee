@@ -20,12 +20,12 @@
 showUserLinks = ->
   email = Cookie.get('email')
   if email
+    console.log email
     email = decodeURIComponent(email.replace('+',' '))
     $('#email').text(email)
-    $('#signup, .orlogin').hide()
+    $('#signup, .orlogin, #login').hide()
   else
     $('#usermenu').hide()
-  $('#userlinks').show()
 
 # For browsers that don't recognize the HTML5 autofocus attribute
 autoFocus = ->
