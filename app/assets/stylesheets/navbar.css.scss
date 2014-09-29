@@ -6,8 +6,9 @@
   top: 0;
   left: 0;
   right: 0;
-  height: 40px;
+  min-height: 40px;
   box-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1) inset, 0px 1px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
 
   .brand {
     color: $navbarBrandColor;
@@ -48,25 +49,13 @@
 
   a {
     color: $navbarLinkColor;
-    padding: 3px;
+    padding: 6px;
     border-radius: 3px;
 
     &:hover {
       color: $navbarLinkColorHover;
       background-color: $navbarLinkBackgroundHover;
     }
-  }
-  // Dropdown caret in navbar
-  .nav li.dropdown .dropdown-toggle .caret,
-  .nav li.dropdown.open .caret {
-    border-top-color: $navbarLinkColor;
-    border-bottom-color: $navbarLinkColor;
-  }
-  .nav li.dropdown.open .caret,
-  .nav li.dropdown.open.active .caret,
-  .nav li.dropdown.open a:hover .caret {
-    border-top-color: $navbarLinkColorHover;
-    border-bottom-color: $navbarLinkColorHover;
   }
 }
 
