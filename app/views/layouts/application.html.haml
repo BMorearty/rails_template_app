@@ -17,7 +17,7 @@
     %meta{ name: 'viewport', content: 'width=device-width, initial-scale=1.0' }
   %body{ class: "#{controller_name} #{controller_name}_#{params[:action]}" }
     .navbar
-      .navbar-inner
+      .container
         = link_to 'RailsTemplateApp', root_path, class: 'brand'
         %ul
           %li#usermenu
@@ -26,5 +26,6 @@
           %li#signup= link_to "Sign up", signup_path
           %li.orlogin or
           %li#login= link_to "Login", login_path
-    =render partial: "shared/flash_messages", locals: { flash: flash }
-    = yield
+    .container
+      =render partial: "shared/flash_messages", locals: { flash: flash }
+      = yield

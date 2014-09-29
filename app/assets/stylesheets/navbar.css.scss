@@ -2,22 +2,13 @@
 
 .navbar {
   background-color: $navbarBackground;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  min-height: 40px;
   box-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1) inset, 0px 1px 10px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   
-  .navbar-inner {
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 940px;
-
+  .container {
     > ul {
       float: right;
-      padding: 12px 0 12px 0;
+      padding: 12px 0;
     }
   }
 
@@ -28,8 +19,8 @@
     font-size: 20px;
     text-shadow: white 0 1px 0;
     margin-top: 3px;
-    margin-left: -20px;
-    padding: 3px 20px 6px;
+    margin-left: -10px;
+    padding: 3px 10px 6px;
     display: inline-block;
     text-decoration: none;
 
