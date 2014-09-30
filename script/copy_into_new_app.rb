@@ -122,7 +122,9 @@ end
 def generate_secret
   say "Generating app secret"
   filename = "config/secrets.yml"
-  contents = File.read(filename).gsub('this secret token will be replaced', SecureRandom.hex(128))
+  contents = File.read(filename).gsub('this secret token will be replaced') do
+    SecureRandom.hex(128)
+  end
   File.write filename, contents
 end
 
@@ -133,6 +135,11 @@ def enable_mailer_for_development
   filename = "config/environments/development.rb"
   contents = File.read(filename).gsub('config.action_mailer.perform_deliveries = false', 'config.action_mailer.perform_deliveries = true')
   File.write filename, contents
+end
+
+def clear_tmp_folder
+  FileUtils.rm_rf("tmp")
+  FileUtils.mkpath("tmp")
 end
 
 usage unless app_name && app_name.downcase == app_name
@@ -146,4 +153,5 @@ create_db
 remove_db_schema
 generate_secret
 enable_mailer_for_development
+clear_tmp_folder
 say "Done."

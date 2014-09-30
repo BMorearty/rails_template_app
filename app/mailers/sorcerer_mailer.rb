@@ -2,6 +2,7 @@ class SorcererMailer < ActionMailer::Base
   include Roadie::Rails::Automatic
 
   layout "mailer"
+
   default from: "do-not-reply@railstemplateapp.com"
 
   def activation_needed_email(id)
