@@ -2,8 +2,10 @@
 
 a:link, a:visited {
   color: $linkColor;
+  text-decoration: none;
 }
 
 a:hover, a:active {
   color: $linkColorHover;
+  text-decoration: underline;
 }
