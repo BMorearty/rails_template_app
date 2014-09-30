@@ -1,4 +1,7 @@
-body.user_sessions_new {
+@import "variables";
+@import "basics/inputs";
+
+body.user_sessions {
   #remember_me label {
     display: inline;
   }
@@ -8,7 +11,12 @@ body.user_sessions_new {
     margin-bottom: 2em;
   }
 
-  #reset_password {
+  #reset-password {
     display: none;
+  }
+
+  #reset-button {
+    @extend .button;
+    margin-left: 10px;
   }
 }

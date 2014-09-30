@@ -1,9 +1,11 @@
 = form_tag user_sessions_path, :method => :post do
-  = label_tag :email, nil
-  = text_field_tag :email, params[:email], autofocus: 'autofocus'
-  = label_tag :password, nil
-  = password_field_tag :password, nil
-  %div#remember_me
+  .field
+    = label_tag :email, nil
+    = text_field_tag :email, params[:email], autofocus: 'autofocus'
+  .field
+    = label_tag :password, nil
+    = password_field_tag :password, nil
+  #remember_me.field
     = check_box_tag(:remember)
     = label_tag :remember, "Keep me logged in"
   .form-actions

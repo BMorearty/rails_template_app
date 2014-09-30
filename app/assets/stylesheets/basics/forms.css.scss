@@ -1,5 +1,16 @@
 @import "variables";
 
+label {
+  display: inline-block;
+  min-width: 80px;
+}
+
+// Put a label and input in a .field div.
+.field {
+  margin-top: 10px;
+}
+
+// Put form buttons i a .form-actions div.
 .form-actions {
   background-color: $formActionsBackground;
   border-top: 1px solid $formActionsTopBorder;
@@ -9,4 +20,10 @@
   input[type=submit], input[type=button], button {
     margin-right: 10px;
   }
+}
+
+input[type=text], input[type=password] {
+  padding: 7px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
