@@ -21,6 +21,14 @@ $pink:            #c3325f;
 $purple:          #7a43b6;
 
 
+// Flash
+// -------------------------
+
+$infoColor:       #c09853;
+$infoBackground:  #fcf8E3;
+$infoBorder:      #fbeed5;
+
+
 // Links
 // -------------------------
 $linkColor:       #08c;
@@ -35,7 +43,7 @@ $monoFontFamily:  Menlo, Monaco, Consolas, "Courier New", monospace;
 
 $baseFontSize:    13px;
 $baseFontFamily:  Lato;  @import url(http://fonts.googleapis.com/css?family=Lato);
-$baseLineHeight:  18px;
+// $baseLineHeight:  18px;
 $altFontFamily:   $serifFontFamily;
 
 $headingsFontFamily:  Tahoma;
@@ -129,3 +137,9 @@ $navbarLinkBackgroundHover:     #84BC3A;
 $navbarLinkBackgroundActive:    $navbarLinkBackgroundHover;
 
 $navbarBrandColor:              #458331;
+
+
+// Responsive
+// -------------------------
+
+$maxWidth:   940px;

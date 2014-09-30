@@ -1,0 +1,16 @@
+@import "variables";
+
+.flash {
+  > div {
+    margin-bottom: 18px;
+    padding: 8px 14px;
+    border: 1px solid;
+    border-radius: 4px;
+  }
+  
+  .notice {
+    color: $infoColor;
+    border-color: $infoBorder;
+    background-color: $infoBackground;
+  }
+}
