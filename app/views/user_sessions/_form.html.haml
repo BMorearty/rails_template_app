@@ -1,4 +1,4 @@
-= form_tag user_sessions_path, :method => :post do
+= form_tag user_sessions_path, method: :post do
   .field
     = label_tag :email, nil
     = text_field_tag :email, params[:email], autofocus: 'autofocus'
@@ -8,6 +8,6 @@
   #remember_me.field
     = check_box_tag(:remember)
     = label_tag :remember, "Keep me logged in"
-  .form-actions
+  .actions
     = submit_tag "Login"
     = link_to t('.forgot', default: 'Forgot password'), 'javascript:;', id: 'forgot_password'

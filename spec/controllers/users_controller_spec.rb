@@ -31,19 +31,19 @@ describe UsersController, type: :controller do
 
     describe "GET edit" do
       it "lets a user edit his own settings" do
-        get :edit, :id => user
+        get :edit, id: user
         expect(response).to be_success
         expect(assigns(:user)).to eq(user)
       end
 
       it "lets a user edit 'current' user settings" do
-        get :edit, :id => 'current'
+        get :edit, id: 'current'
         expect(response).to be_success
         expect(assigns(:user)).to eq(user)
       end
 
       it "does not let a user edit another user's settings" do
-        get :edit, :id => other_user
+        get :edit, id: other_user
         expect(response).to be_not_found
         expect(assigns(:user)).to be_nil
       end

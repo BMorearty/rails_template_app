@@ -3,7 +3,7 @@
   = render partial: 'normal_fields', locals: { f: f }
   - if @user.new_record?
     = render partial: 'password_fields', locals: { f: f }
-  .form-actions
+  .actions
     = f.submit edit_user_submit_text(@user)
     - if @user.persisted?
       %span#change_password

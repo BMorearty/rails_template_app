@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   validate                  :old_password_must_be_correct, if: :password, on: :update
   validates_confirmation_of :password, if: :password, unless: :old_password_incorrect?
   validates_presence_of     :password, on: :create
-  validates_length_of       :password, :minimum => 4, if: :password, unless: :old_password_incorrect?
+  validates_length_of       :password, minimum: 4, if: :password, unless: :old_password_incorrect?
   validates_presence_of     :email
   validates_uniqueness_of   :email
   validates_format_of       :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, if: :email_changed?

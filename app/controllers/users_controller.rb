@@ -27,10 +27,10 @@ class UsersController < ApplicationController
     if @user.save
       if (@user = login(params[:user][:email], params[:user][:password], true))
         set_user_cookies @user
-        redirect_back_or_to root_path, :notice => t('users.new.account_created')
+        redirect_back_or_to root_path, notice: t('users.new.account_created')
       else
         flash.now[:alert] = t('users.new.could_not_login')
-        render :action => "new"
+        render action: "new"
       end
     else
       render action: "new"

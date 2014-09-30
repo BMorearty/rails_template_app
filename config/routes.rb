@@ -2,7 +2,7 @@ require 'resque/server'
 
 Rails.application.routes.draw do
   resources :user_sessions
-  resources :password_resets
+  resources :password_resets, only: [ :create, :edit, :update ]
   resources :users do
     member do
       get :activate

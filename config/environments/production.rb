@@ -44,9 +44,9 @@ Rails.application.configure do
 
   # https://devcenter.heroku.com/articles/rack-cache-memcached-static-assets-rails31
   config.action_dispatch.rack_cache = {
-    :metastore    => Dalli::Client.new,
-    :entitystore  => 'file:tmp/cache/rack/body',
-    :allow_reload => false
+    metastore:    Dalli::Client.new,
+    entitystore:  'file:tmp/cache/rack/body',
+    allow_reload: false
   }
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
@@ -78,13 +78,13 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   config.action_mailer.smtp_settings = {
-    :address              => "smtp.gmail.com",
-    :port                 => 587,
-    :user_name            => 'do-not-reply@railstemplateapp.com',
-    :password             => 'super-secret password for rails_template_app',
-    :authentication       => :login,
-    :enable_starttls_auto => true  }
-  config.action_mailer.default_url_options = { :host => config.rails_template_app.host }
+    address:              "smtp.gmail.com",
+    port:                 587,
+    user_name:            'do-not-reply@railstemplateapp.com',
+    password:             'super-secret password for rails_template_app',
+    authentication:       :login,
+    enable_starttls_auto: true }
+  config.action_mailer.default_url_options = { host: config.rails_template_app.host }
   config.roadie.url_options = { host: config.rails_template_app.host }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
