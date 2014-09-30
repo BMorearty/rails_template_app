@@ -2,7 +2,7 @@
 
 label {
   display: inline-block;
-  min-width: 80px;
+  min-width: 110px;
 }
 
 // Put a label and input in a .field div.
@@ -22,8 +22,15 @@ label {
   }
 }
 
-input[type=text], input[type=password] {
+input[type=text], input[type=password], input[type=email] {
   padding: 7px;
   border: 1px solid #ccc;
   border-radius: 4px;
+}
+
+.field_with_errors {
+  display: inline-block;
+  input {
+    border-color: $red;
+  }
 }
