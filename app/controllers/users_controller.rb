@@ -82,7 +82,7 @@ class UsersController < ApplicationController
   end
 
   def find_users
-    @users ||= User.scoped
+    @users ||= User.all
   end
 
   def user_params
