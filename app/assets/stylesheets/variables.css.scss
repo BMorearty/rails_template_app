@@ -24,9 +24,13 @@ $purple:          #7a43b6;
 // Flash
 // -------------------------
 
-$infoColor:       #c09853;
-$infoBackground:  #fcf8E3;
-$infoBorder:      #fbeed5;
+$noticeColor:      #c09853;
+$noticeBackground: #fcf8E3;
+$noticeBorder:     #fbeed5;
+
+$alertColor:       #D14;
+$alertBackground:  lighten($pink,50%);
+$alertBorder:      darken($alertBackground, 5%);
 
 
 // Links

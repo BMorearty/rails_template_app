@@ -7,10 +7,16 @@
     border: 1px solid;
     border-radius: 4px;
   }
-  
+
   .notice {
-    color: $infoColor;
-    border-color: $infoBorder;
-    background-color: $infoBackground;
+    color: $noticeColor;
+    border-color: $noticeBorder;
+    background-color: $noticeBackground;
+  }
+
+  .alert {
+    color: $alertColor;
+    border-color: $alertBorder;
+    background-color: $alertBackground;
   }
 }
