@@ -217,7 +217,7 @@ Rails.application.config.sorcery.configure do |config|
     # your mailer class. Required.
     # Default: `nil`
     #
-    user.user_activation_mailer = SorcererMailer::Background
+    user.user_activation_mailer = SorceryMailer.enqueue
     
     
     # when true sorcery will not automatically
@@ -268,7 +268,7 @@ Rails.application.config.sorcery.configure do |config|
     # mailer class. Needed.
     # Default: `nil`
     #
-    user.reset_password_mailer = SorcererMailer::Background
+    user.reset_password_mailer = SorceryMailer.enqueue
 
 
     # reset password email method on your mailer class.
@@ -294,8 +294,7 @@ Rails.application.config.sorcery.configure do |config|
     # hammering protection, how long to wait before allowing another email to be sent.
     # Default: `5 * 60`
     #
-    # user.reset_password_time_between_emails =
-
+    user.reset_password_time_between_emails = 20.seconds
 
     # -- brute_force_protection --
     # Failed logins attribute name.

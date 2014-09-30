@@ -12,10 +12,10 @@
     = f.label :email
     = @user.email
   .field
-    = f.label :password, t('.new_password', new: @user.new_record? ? '' : 'new ')
-    = f.password_field :password, placeholder: t('.new_password_placeholder'), autofocus: autofocus
+    = f.label :password, t('users.password_fields.new_password', new: @user.new_record? ? '' : 'new ')
+    = f.password_field :password, placeholder: t('users.password_fields.new_password_placeholder'), autofocus: "autofocus"
   .field
-    = f.label :password_confirmation, t('.retype_password')
-    = f.password_field :password_confirmation, placeholder: t('.retype_password_placeholder')
+    = f.label :password_confirmation, t('users.password_fields.retype_password')
+    = f.password_field :password_confirmation, placeholder: t('users.password_fields.retype_password_placeholder')
   .actions
     = f.submit

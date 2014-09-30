@@ -1,7 +1,8 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
-  host = "test.host"
+  config.rails_template_app.host = "test.host"
+  config.rails_template_app.port = nil
 
   # The test environment is used exclusively to run your application's
   # test suite. You never need to work with it otherwise. Remember that
@@ -32,7 +33,10 @@ Rails.application.configure do
   # The :test delivery method accumulates sent emails in the
   # ActionMailer::Base.deliveries array.
   config.action_mailer.delivery_method = :test
-  config.action_mailer.default_url_options = { host: host }
+  config.action_mailer.default_url_options =
+    { host: config.rails_template_app.host, port: config.rails_template_app.port }
+  config.roadie.url_options =
+    { host: config.rails_template_app.host, port: config.rails_template_app.port }
 
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr

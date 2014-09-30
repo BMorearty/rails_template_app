@@ -2,6 +2,7 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   config.rails_template_app.host = "www.railstemplateapp.com"
+  config.rails_template_app.port = nil
 
   # Code is not reloaded between requests.
   config.cache_classes = true
@@ -84,8 +85,10 @@ Rails.application.configure do
     password:             'super-secret password for rails_template_app',
     authentication:       :login,
     enable_starttls_auto: true }
-  config.action_mailer.default_url_options = { host: config.rails_template_app.host }
-  config.roadie.url_options = { host: config.rails_template_app.host }
+  config.action_mailer.default_url_options =
+    { host: config.rails_template_app.host, port: config.rails_template_app.port }
+  config.roadie.url_options =
+    { host: config.rails_template_app.host, port: config.rails_template_app.port }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).

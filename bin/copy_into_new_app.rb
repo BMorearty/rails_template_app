@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 #
-# rails_template_app/script/copy_into_new_app APP_NAME
+# rails_template_app/bin/copy_into_new_app APP_NAME
 
 require 'pathname'
 require 'active_support/core_ext/string/inflections'
@@ -32,7 +32,7 @@ def source_dir
 end
 
 def usage
-  puts "usage: rails_template_app/script/copy_into_new_app APP_NAME [DIR_NAME] [DOMAIN]"
+  puts "usage: rails_template_app/bin/copy_into_new_app APP_NAME [DIR_NAME] [DOMAIN]"
   puts
   puts "       Run from the parent directory of rails_template_app."
   puts "       APP_NAME, DIR_NAME, and DOMAIN should be all lower case."
@@ -41,11 +41,11 @@ def usage
   puts "       Default DOMAIN is APPNAME.com (underscores removed)."
   puts
   puts "examples:"
-  puts "       rails_template_app/script/copy_into_new_app awesome_app"
+  puts "       rails_template_app/bin/copy_into_new_app awesome_app"
   puts "         # app name is awesome_app/AwesomeApp,   dir name is awesome_app,   domain is awesomeapp.com"
-  puts "       rails_template_app/script/copy_into_new_app great_app greatapp"
+  puts "       rails_template_app/bin/copy_into_new_app great_app greatapp"
   puts "         # app name is great_app/GreatApp,       dir name is greatapp,      domain is greatapp.com"
-  puts "       rails_template_app/script/copy_into_new_app awesome_app awesomeapp helloworld.com"
+  puts "       rails_template_app/bin/copy_into_new_app awesome_app awesomeapp helloworld.com"
   puts "         # app name is awesome_app/AwesomeApp,   dir name is awesomeapp,    domain is helloworld.com"
   exit
 end
@@ -55,7 +55,9 @@ def copy_files(from, to)
   print `cp -r #{from} #{to}`
   FileUtils.rm_rf "#{to}/.git"
   FileUtils.rm_rf "#{to}/.idea"
-  FileUtils.rm "#{to}/script/copy_into_new_app.rb"
+  FileUtils.rm_rf "#{to}/tmp"
+  FileUtils.mkpath("#{to}/tmp")
+  FileUtils.rm "#{to}/bin/copy_into_new_app.rb"
 end
 
 def maybe_rename_file(filename)
@@ -112,7 +114,7 @@ def create_db
   print `bundle exec rake db:create`
 end
 
-# db/schema.rb exists in the original app so I can things in there.
+# db/schema.rb exists in the original app so I can test things in there.
 # It needs to be reset in the copy.
 def remove_db_schema
   say "Removing db/schema.rb"
@@ -137,11 +139,6 @@ def enable_mailer_for_development
   File.write filename, contents
 end
 
-def clear_tmp_folder
-  FileUtils.rm_rf("tmp")
-  FileUtils.mkpath("tmp")
-end
-
 usage unless app_name && app_name.downcase == app_name
 say "Generating app #{app_name} in #{Dir.pwd}/#{dir_name}"
 copy_files(source_dir, dir_name)
@@ -153,5 +150,4 @@ create_db
 remove_db_schema
 generate_secret
 enable_mailer_for_development
-clear_tmp_folder
 say "Done."

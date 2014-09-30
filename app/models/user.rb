@@ -2,12 +2,13 @@ class User < ActiveRecord::Base
   authenticates_with_sorcery!
 
   attr_writer :old_password
+  attr_accessor :resetting_password
 
   ROLES = %w( guest registered admin )
 
   before_validation         :assign_default_role, unless: :role
 
-  validate                  :old_password_must_be_correct, if: :password, on: :update
+  validate                  :old_password_must_be_correct, if: :password, unless: :resetting_password, on: :update
   validates_confirmation_of :password, if: :password, unless: :old_password_incorrect?
   validates_presence_of     :password, on: :create
   validates_length_of       :password, minimum: 4, if: :password, unless: :old_password_incorrect?

@@ -1,7 +1,8 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
-  config.rails_template_app.host = "railstemplateapp.dev"
+  config.rails_template_app.host = "localhost"
+  config.rails_template_app.port = 3000
 
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
@@ -18,16 +19,19 @@ Rails.application.configure do
   # Raise an error if the mailer can't send
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.perform_deliveries = false
+  config.action_mailer.perform_deliveries = true
   config.action_mailer.smtp_settings = {
     address:              "smtp.gmail.com",
     port:                 587,
-    user_name:            'do-not-reply@railstemplateapp.com',
-    password:             'super-secret password for rails_template_app',
+    user_name:            ENV['SMTP_USERNAME'] || 'do-not-reply@railstemplateapp.com',
+    password:             ENV['SMTP_PASSWORD'] || 'super-secret password for rails_template_app',
     authentication:       :login,
-    enable_starttls_auto: true }
-  config.action_mailer.default_url_options = { host: config.rails_template_app.host }
-  config.roadie.url_options = { host: config.rails_template_app.host }
+    enable_starttls_auto: true
+  }
+  config.action_mailer.default_url_options =
+    { host: config.rails_template_app.host, port: config.rails_template_app.port }
+  config.roadie.url_options =
+    { host: config.rails_template_app.host, port: config.rails_template_app.port }
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log

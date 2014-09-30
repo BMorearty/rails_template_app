@@ -4,7 +4,7 @@ class PasswordResetsController < ApplicationController
   # Request to reset password.
   # You get here when the user entered his email in the reset password form and submitted it.
   def create
-    @user = User.find_by_email(params[:email])
+    @user = User.find_by_email(params[:reset_email])
     @user.deliver_reset_password_instructions! if @user
 
     # Tell the user instructions have been sent whether or not email was found.
@@ -15,7 +15,7 @@ class PasswordResetsController < ApplicationController
   # This is the reset password form.
   def edit
     @token = params[:id]
-    @user  = User.load_from_reset_password_token(params[:id])
+    @user  = User.load_from_reset_password_token(@token)
 
     not_authenticated if @user.blank?
   end
@@ -23,7 +23,7 @@ class PasswordResetsController < ApplicationController
   # This action fires when the user has subimtted the reset password form.
   def update
     @token = params[:id]
-    @user  = User.load_from_reset_password_token(params[:id])
+    @user  = User.load_from_reset_password_token(@token)
 
     if @user.blank?
       not_authenticated
@@ -32,6 +32,9 @@ class PasswordResetsController < ApplicationController
 
     # Make the password confirmation validation work.
     @user.password_confirmation = params[:user][:password_confirmation]
+
+    # Don't require entry of the old password.
+    @user.resetting_password = true
 
     # Clear the temporary token and update the password.
     if @user.change_password!(params[:user][:password])
