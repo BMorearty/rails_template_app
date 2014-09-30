@@ -1,0 +1,12 @@
+@import "variables";
+
+.form-actions {
+  background-color: $formActionsBackground;
+  border-top: 1px solid $formActionsTopBorder;
+  padding: 20px;
+  margin: 20px 0;
+
+  input[type=submit], input[type=button], button {
+    margin-right: 10px;
+  }
+}
