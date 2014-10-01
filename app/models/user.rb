@@ -24,6 +24,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def has_password?(password)
+    self.class.sorcery_config.encryption_provider.matches?(crypted_password, password, salt)
+  end
+
 private
 
   def assign_default_role
@@ -31,8 +35,7 @@ private
   end
 
   def old_password_must_be_correct
-    correct = self.class.sorcery_config.encryption_provider.matches?(crypted_password, @old_password, salt)
-    errors[:old_password] = 'is incorrect' unless correct
+    errors[:old_password] = 'is incorrect' unless has_password?(@old_password)
   end
 
   def old_password_incorrect?

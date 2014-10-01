@@ -2,12 +2,13 @@
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
-require 'rspec/autorun'
 require 'factory_girl'
 
 module Benchmark
   class Tms
-    FORMAT = "%17n %10.6u %10.6y %10.6t %10.6r\n"
+    quietly do
+      FORMAT = "%17n %10.6u %10.6y %10.6t %10.6r\n"
+    end
   end
 end
 
@@ -25,7 +26,6 @@ RSpec.configure do |config|
   config.include Sorcery::TestHelpers::Rails::Controller, type: :controller
   config.include Sorcery::TestHelpers::Rails::Integration, type: :feature
   config.include RequestSpecHelpers, type: :request
-  config.include FactoryGirl::Syntax::Methods
   config.include CapybaraExtensions
   config.include Capybara::DSL, type: :request
   config.include BM

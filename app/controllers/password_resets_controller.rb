@@ -5,7 +5,13 @@ class PasswordResetsController < ApplicationController
   # You get here when the user entered his email in the reset password form and submitted it.
   def create
     @user = User.find_by_email(params[:reset_email])
-    @user.deliver_reset_password_instructions! if @user
+
+    if @user
+      # This just sets the appropriate fields.  I send the email by myself so I can put it in
+      # background queue and only pass the user id, not the whole object.
+      @user.deliver_reset_password_instructions!
+      SorceryMailer.enqueue.reset_password_email(@user.id)
+    end
 
     # Tell the user instructions have been sent whether or not email was found.
     # This is to not leak information to attackers about which emails exist in the system.
@@ -38,7 +44,7 @@ class PasswordResetsController < ApplicationController
 
     # Clear the temporary token and update the password.
     if @user.change_password!(params[:user][:password])
-      redirect_to(root_path, notice: 'Password was successfully updated.')
+      redirect_to(root_path, notice: "Password was successfully updated.")
     else
       render action: "edit"
     end

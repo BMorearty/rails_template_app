@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe "UserSessions", type: :request do
-  let(:user) { create(:user) }
+  let(:user) { FactoryGirl.create(:user) }
 
   describe "login" do
     describe "accessing a protected page" do

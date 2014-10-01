@@ -225,7 +225,7 @@ Rails.application.config.sorcery.configure do |config|
     # manually handle how and when email is sent.
     # Default: `false`
     #
-    user.activation_mailer_disabled = !Rails.application.config.rails_template_app.sorcery_send_activation_email
+    # user.activation_mailer_disabled =
 
 
     # activation needed email method on your mailer class.
@@ -268,7 +268,7 @@ Rails.application.config.sorcery.configure do |config|
     # mailer class. Needed.
     # Default: `nil`
     #
-    user.reset_password_mailer = SorceryMailer.enqueue
+    # user.reset_password_mailer =
 
 
     # reset password email method on your mailer class.
@@ -282,7 +282,7 @@ Rails.application.config.sorcery.configure do |config|
     # manually handle how and when email is sent
     # Default: `false`
     #
-    # user.reset_password_mailer_disabled =                                      
+    user.reset_password_mailer_disabled = true
 
                                                                           
     # how many seconds before the reset request expires. nil for never expires.

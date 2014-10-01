@@ -5,7 +5,7 @@ describe UsersController, type: :controller do
   context "logged out" do
     describe "GET index" do
       it "assigns all users as @users" do
-        create(:user)
+        FactoryGirl.create(:user)
         get :index
         expect(assigns(:users)).to be_nil
         assert_redirected_to login_path
@@ -14,8 +14,8 @@ describe UsersController, type: :controller do
   end
 
   context "logged in" do
-    let(:user) { create(:user) }
-    let(:other_user) { create(:user) }
+    let(:user) { FactoryGirl.create(:user) }
+    let(:other_user) { FactoryGirl.create(:user) }
 
     before do
       login_user user
