@@ -30,17 +30,11 @@ group :development, :test do
   gem 'pry'
   gem 'pry-rails'
   gem 'pry-remote'
-  gem 'capybara'
-  gem 'rspec-rails', '>= 2.0.1'
   gem 'looksee'
   gem 'guard'
   gem 'guard-rspec'
   gem 'awesome_print'
-  gem 'factory_girl'
-  gem 'factory_girl_rails'
-  gem 'database_cleaner'
   gem 'whiny_validation'
-  gem 'timecop'
 end
 
 group :development do
@@ -50,5 +44,13 @@ group :development do
 end
 
 group :test do
+  gem 'rspec-rails', '>= 2.0.1'
+  gem 'timecop'
+  gem 'database_cleaner'
+  gem 'factory_girl'
+  gem 'factory_girl_rails'
+  gem 'capybara'
   gem 'resque_spec'
+  gem 'selenium-webdriver'
+  gem 'show_me_the_cookies'
 end

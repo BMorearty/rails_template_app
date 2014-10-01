@@ -28,6 +28,7 @@ RSpec.configure do |config|
   config.include RequestSpecHelpers, type: :request
   config.include CapybaraExtensions
   config.include Capybara::DSL, type: :request
+  config.include ShowMeTheCookies, :type => :request
   config.include BM
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your

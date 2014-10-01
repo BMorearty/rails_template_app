@@ -58,7 +58,8 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
 
-  # GET /accounts/users/id/confirm_email?activation_token=abcd123
+  # GET /accounts/users/:id/confirm_email?activation_token=abcd123
+  # GET /confirm_email/:id/abcd123
   #
   # Confirm the email address of a newly-signed-up user.
   def confirm_email
