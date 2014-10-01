@@ -9,7 +9,7 @@
   .container {
     > ul {
       float: right;
-      padding: 12px 0;
+      padding: 6px 0;
     }
   }
 
@@ -48,6 +48,7 @@
     color: $navbarLinkColor;
     padding: 6px;
     border-radius: 3px;
+    display: inline-block;
 
     &:hover, &:focus {
       color: $navbarLinkColorHover;
@@ -56,6 +57,10 @@
   }
 }
 
-#userlinks {
+ul.popup-menu {
   display: none;
+  position: absolute;
+  background-color: white;
+  padding: 10px 10px;
+  box-shadow: 3px 3px 15px rgba(100, 100, 100, 0.5);
 }
