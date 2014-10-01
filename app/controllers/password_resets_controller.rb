@@ -8,7 +8,7 @@ class PasswordResetsController < ApplicationController
 
     if @user
       # This just sets the appropriate fields.  I send the email by myself so I can put it in
-      # background queue and only pass the user id, not the whole object.
+      # background queue and only pass the user id, not the whole User object.
       @user.deliver_reset_password_instructions!
       SorceryMailer.enqueue.reset_password_email(@user.id)
     end

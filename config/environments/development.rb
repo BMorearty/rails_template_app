@@ -54,5 +54,4 @@ Rails.application.configure do
 
   # BCrypt security level.  1 is fast, 10 is secure.
   config.rails_template_app.sorcery_bcrypt_cost = 10
-  config.rails_template_app.sorcery_send_activation_email = true
 end

@@ -217,7 +217,7 @@ Rails.application.config.sorcery.configure do |config|
     # your mailer class. Required.
     # Default: `nil`
     #
-    user.user_activation_mailer = SorceryMailer.enqueue
+    # user.user_activation_mailer =
     
     
     # when true sorcery will not automatically
@@ -225,7 +225,7 @@ Rails.application.config.sorcery.configure do |config|
     # manually handle how and when email is sent.
     # Default: `false`
     #
-    # user.activation_mailer_disabled =
+    user.activation_mailer_disabled = true
 
 
     # activation needed email method on your mailer class.

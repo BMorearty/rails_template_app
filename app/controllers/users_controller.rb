@@ -26,6 +26,9 @@ class UsersController < ApplicationController
   def create
     if @user.save
       if (@user = login(params[:user][:email], params[:user][:password], true))
+        # I send the email by myself so I can put it in
+        # background queue and only pass the user id, not the whole User object.
+        SorceryMailer.enqueue.activation_needed_email(@user.id)
         set_user_cookies @user
         redirect_back_or_to root_path, notice: t('users.new.account_created')
       else
