@@ -46,11 +46,11 @@ $serifFontFamily: Georgia, "Times New Roman", Times, serif;
 $monoFontFamily:  Menlo, Monaco, Consolas, "Courier New", monospace;
 
 $baseFontSize:    13px;
-$baseFontFamily:  Lato;  @import url(http://fonts.googleapis.com/css?family=Lato);
+$baseFontFamily:  Lato, Tahoma, Verdana, Arial, sans-serif;
 // $baseLineHeight:  18px;
 $altFontFamily:   $serifFontFamily;
 
-$headingsFontFamily:  Tahoma;
+$headingsFontFamily:  Lato, Tahoma, Verdana, Arial, sans-serif;
 $headingsFontWeight:  bold;
 $headingsColor:       inherit;
 
