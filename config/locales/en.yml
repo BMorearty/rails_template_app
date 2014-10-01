@@ -35,17 +35,24 @@ en:
       back: "Back"
       cancel: "Cancel"
       change_password: "Change password"
+      confirm: "Are you sure?"
       destroy: "Destroy"
       edit: "Edit"
       new: "New"
-      sign_up: "Sign up"
       save: "Save"
+      sign_up: "Sign up"
     titles:
       edit: "Edit %{model}"
+  password_resets:
+    controller:
+      password_updated: "Password was successfully updated."
   user_sessions:
+    forgot_password_form:
+      reset_email: "Enter account email"
+    form:
+      forgot: "Forgot password"
     new:
       title: "Login"
-      forgot: "Forgot password"
   users:
     new:
       account_created: "Account created. You will receive a confirmation email Real Soon Now."

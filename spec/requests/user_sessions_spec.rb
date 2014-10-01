@@ -3,10 +3,14 @@ require 'spec_helper'
 describe "UserSessions", type: :request do
   let(:user) { FactoryGirl.create(:user) }
 
+  def protected_path(user)
+    edit_user_path(user)
+  end
+
   describe "login" do
     describe "accessing a protected page" do
       before do
-        # TODO: visit some_protected_path
+        visit protected_path(user)
       end
 
       it "redirects you to the login page" do
@@ -17,7 +21,7 @@ describe "UserSessions", type: :request do
         fill_in 'Email', with: user.email
         fill_in 'Password', with: 'secret'
         click_button 'Login'
-        expect(current_path).to eq(some_protected_path)
+        expect(current_path).to eq(protected_path(user))
       end
     end
   end

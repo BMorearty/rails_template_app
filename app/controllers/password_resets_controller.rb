@@ -44,7 +44,7 @@ class PasswordResetsController < ApplicationController
 
     # Clear the temporary token and update the password.
     if @user.change_password!(params[:user][:password])
-      redirect_to(root_path, notice: "Password was successfully updated.")
+      redirect_to(root_path, notice: t('password_resets.controller.password_updated'))
     else
       render action: "edit"
     end

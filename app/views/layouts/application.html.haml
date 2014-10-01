@@ -21,7 +21,7 @@
         = link_to 'RailsTemplateApp', root_path, class: 'brand'
         %ul
           %li#usermenu
-            %a#email.popup-parent{ href: "javascript:;" }
+            %a#current_user_email.popup-parent{ href: "javascript:;" }
             %ul.popup-menu
               %li= link_to "Logout", logout_path
           %li#signup= link_to "Sign up", signup_path

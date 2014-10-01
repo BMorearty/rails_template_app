@@ -21,7 +21,7 @@ showUserLinks = ->
   email = Cookie.get('email')
   if email
     email = decodeURIComponent(email.replace('+',' '))
-    $('#email').text("#{email} ▾")
+    $('#current_user_email').text("#{email} ▾")
     $('#signup, .orlogin, #login').hide()
   else
     $('#usermenu').hide()
