@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   resources :password_resets, only: [ :create, :edit, :update ]
 
-  resources :users, except: :index do
+  resources :users, except: [ :index, :show ] do
     member do
       get :activate
       get :edit_password, action: 'edit', edit_password: true

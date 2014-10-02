@@ -3,11 +3,6 @@ class UsersController < ApplicationController
   before_action :find_user, only: [ :show, :edit, :update, :destroy ]
   before_action :new_user, only: [ :new, :create ]
 
-  # GET /users/1
-  # GET /users/current
-  def show
-  end
-
   # GET /users/new
   def new
   end
@@ -43,7 +38,7 @@ class UsersController < ApplicationController
   def update
     if @user.update_attributes(user_params)
       notice = params[:edit_password] ? t('users.update.changed_password') : t('users.update.changed')
-      redirect_to @user, notice: notice
+      redirect_to edit_user_path(@user), notice: notice
     else
       render action: params[:edit_password] ? "edit_password" : "edit"
     end

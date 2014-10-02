@@ -7,13 +7,6 @@ describe UsersController, type: :controller do
   let(:other_user) { FactoryGirl.create(:user) }
 
   context "logged out" do
-    describe "GET show" do
-      it "requires logging in before showing any user's settings" do
-        get :show, id: other_user
-        expect(response).to redirect_to(login_path)
-      end
-    end
-
     describe "GET edit" do
       it "requires logging in before editing any user's settings" do
         get :edit, id: other_user
@@ -85,26 +78,6 @@ describe UsersController, type: :controller do
       login_user user
     end
 
-    describe "GET show" do
-      it "lets a user show his own settings" do
-        get :show, id: user
-        expect(response).to be_ok
-        expect(assigns(:user)).to eq(user)
-      end
-
-      it "lets a user show 'current' user settings" do
-        get :edit, id: 'current'
-        expect(response).to be_ok
-        expect(assigns(:user)).to eq(user)
-      end
-
-      it "does not let a user show another user's settings" do
-        expect do
-          get :edit, id: other_user
-        end.to raise_error(ActiveRecord::RecordNotFound)
-      end
-    end
-
     describe "GET edit" do
       it "lets a user edit his own settings" do
         get :edit, id: user
@@ -142,7 +115,7 @@ describe UsersController, type: :controller do
       it "updates the user" do
         put :update, id: user.id, user: { name: "Goofy" }
 
-        expect(response).to redirect_to(user)
+        expect(response).to redirect_to(edit_user_path(user))
         expect(flash[:notice]).to include("Account settings were successfully changed.")
       end
 
@@ -162,7 +135,7 @@ describe UsersController, type: :controller do
           }
 
           expect(user.reload).to have_password("hyuck")
-          expect(response).to redirect_to(user)
+          expect(response).to redirect_to(edit_user_path(user))
           expect(flash[:notice]).to include("Password was successfully changed.")
         end
 
