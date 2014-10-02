@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe UsersController, type: :controller do
+  render_views
+
   let(:unactivated_user) { FactoryGirl.create(:new_user) }
   let(:other_user) { FactoryGirl.create(:user) }
 
@@ -37,6 +39,13 @@ describe UsersController, type: :controller do
 
         # This is the format in which ResqueMailQueue enqueues emails
         expect(SorceryMailer).to have_queued('klass' => "SorceryMailer", 'method' => :activation_needed_email, 'args' => [User.last.id])
+      end
+    end
+
+    describe "PUT update" do
+      it "requires logging in" do
+        put :update, id: other_user
+        expect(response).to redirect_to(login_path)
       end
     end
 
@@ -79,13 +88,13 @@ describe UsersController, type: :controller do
     describe "GET show" do
       it "lets a user show his own settings" do
         get :show, id: user
-        expect(response).to be_success
+        expect(response).to be_ok
         expect(assigns(:user)).to eq(user)
       end
 
       it "lets a user show 'current' user settings" do
         get :edit, id: 'current'
-        expect(response).to be_success
+        expect(response).to be_ok
         expect(assigns(:user)).to eq(user)
       end
 
@@ -99,18 +108,74 @@ describe UsersController, type: :controller do
     describe "GET edit" do
       it "lets a user edit his own settings" do
         get :edit, id: user
-        expect(response).to be_success
+        expect(response).to be_ok
         expect(assigns(:user)).to eq(user)
       end
 
       it "lets a user edit 'current' user settings" do
         get :edit, id: 'current'
-        expect(response).to be_success
+        expect(response).to be_ok
         expect(assigns(:user)).to eq(user)
       end
 
       it "does not let a user edit another user's settings" do
         expect { get :edit, id: other_user }.to raise_error(ActiveRecord::RecordNotFound)
+      end
+
+      describe "when editing the password" do
+        it "renders the edit password form and sets the edit_password flag in the form" do
+          get :edit, id: user, edit_password: true
+          expect(response).to be_ok
+          expect(response).to render_template(:edit_password)
+          expect(response.body).to have_css("input[name=edit_password][type=hidden]")
+        end
+      end
+    end
+
+    describe "PUT update" do
+      it "does not allow updating another user" do
+        expect do
+          put :update, id: other_user.id, user: { name: "Goofy" }
+        end.to raise_error(ActiveRecord::RecordNotFound)
+      end
+
+      it "updates the user" do
+        put :update, id: user.id, user: { name: "Goofy" }
+
+        expect(response).to redirect_to(user)
+        expect(flash[:notice]).to include("Account settings were successfully changed.")
+      end
+
+      it "upon validation failure, renders the edit form" do
+        put :update, id: user.id, user: { email: "invalid" }
+
+        expect(response).to render_template(:edit)
+        expect(response.body).to include("Email is invalid")
+      end
+
+      describe "changing the password" do
+        it "updates the password" do
+          put :update, id: user.id, edit_password: true, user: {
+            old_password:          "secret",
+            password:              "hyuck",
+            password_confirmation: "hyuck"
+          }
+
+          expect(user.reload).to have_password("hyuck")
+          expect(response).to redirect_to(user)
+          expect(flash[:notice]).to include("Password was successfully changed.")
+        end
+
+        it "upon validation failure, renders the edit_password form" do
+          put :update, id: user.id, edit_password: true, user: {
+            old_password:          "not the right password",
+            password:              "hyuck",
+            password_confirmation: "hyuck"
+          }
+
+          expect(response).to render_template(:edit_password)
+          expect(response.body).to include("Old password is incorrect")
+        end
       end
     end
 
