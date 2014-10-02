@@ -7,18 +7,18 @@ describe UsersController, type: :controller do
   let(:other_user) { FactoryGirl.create(:user) }
 
   context "logged out" do
-    describe "GET edit" do
-      it "requires logging in before editing any user's settings" do
-        get :edit, id: other_user
-        expect(response).to redirect_to(login_path)
-      end
-    end
-
     describe "GET new" do
       it "shows the Signup page" do
         get :new
         expect(response).to be_ok
         expect(assigns).to have_key(:user)
+      end
+    end
+
+    describe "GET edit" do
+      it "requires logging in before editing any user's settings" do
+        get :edit, id: other_user
+        expect(response).to redirect_to(login_path)
       end
     end
 
