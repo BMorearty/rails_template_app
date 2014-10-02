@@ -61,7 +61,7 @@ describe UsersController, type: :controller do
       end
 
       it "activates the user and redirects to the login page" do
-        expect(unactivated_user.reload.activation_state).to eq("pending")
+        expect(unactivated_user.activation_state).to eq("pending")
         get :confirm_email, id: unactivated_user.id, activation_token: unactivated_user.activation_token
         expect(unactivated_user.reload.activation_state).to eq("active")
         expect(response).to redirect_to(login_path(email: unactivated_user.email))
@@ -144,7 +144,7 @@ describe UsersController, type: :controller do
 
     describe "GET confirm_email" do
       it "activates the user and redirects to the home page" do
-        expect(user.reload.activation_state).to eq("pending")
+        expect(user.activation_state).to eq("pending")
         get :confirm_email, id: user.id, activation_token: user.activation_token
         expect(user.reload.activation_state).to eq("active")
         expect(response).to redirect_to(root_path)
