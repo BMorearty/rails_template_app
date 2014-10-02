@@ -1,18 +1,23 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  before_filter :require_login
-  before_filter :mini_profiler, if: :logged_in?
-  around_filter :set_time_zone, if: :logged_in?
+  before_action :require_login
+  before_action :mini_profiler, if: :logged_in?
+  around_action :set_time_zone, if: :logged_in?
 
 private
 
+  def not_found
+    raise ActiveRecord::RecordNotFound
+  end
+
+  # Sorcery calls this when require_login fails.
   def not_authenticated
     redirect_to login_path
   end
 
   def mini_profiler
-    if current_user.is_admin?
+    if current_user.admin?
       Rack::MiniProfiler.authorize_request
     end
   end

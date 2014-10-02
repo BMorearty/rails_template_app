@@ -1,5 +1,6 @@
 class PasswordResetsController < ApplicationController
-  skip_before_filter :require_login
+  skip_before_action :require_login
+  before_action :load_user_and_token, only: [ :edit, :update ]
 
   # Request to reset password.
   # You get here when the user entered his email in the reset password form and submitted it.
@@ -20,22 +21,10 @@ class PasswordResetsController < ApplicationController
 
   # This is the reset password form.
   def edit
-    @token = params[:id]
-    @user  = User.load_from_reset_password_token(@token)
-
-    not_authenticated if @user.blank?
   end
 
   # This action fires when the user has subimtted the reset password form.
   def update
-    @token = params[:id]
-    @user  = User.load_from_reset_password_token(@token)
-
-    if @user.blank?
-      not_authenticated
-      return
-    end
-
     # Make the password confirmation validation work.
     @user.password_confirmation = params[:user][:password_confirmation]
 
@@ -44,9 +33,18 @@ class PasswordResetsController < ApplicationController
 
     # Clear the temporary token and update the password.
     if @user.change_password!(params[:user][:password])
-      redirect_to(root_path, notice: t('password_resets.controller.password_updated'))
+      redirect_to(root_path, notice: t('password_resets.update.password_updated'))
     else
       render action: "edit"
     end
+  end
+
+  private
+
+  def load_user_and_token
+    @token = params[:id]
+    @user  = User.load_from_reset_password_token(@token)
+
+    not_found if @user.blank?
   end
 end

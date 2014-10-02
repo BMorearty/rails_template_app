@@ -44,7 +44,7 @@ en:
     titles:
       edit: "Edit %{model}"
   password_resets:
-    controller:
+    update:
       password_updated: "Password was successfully updated."
   user_sessions:
     forgot_password_form:
@@ -73,3 +73,5 @@ en:
       changed: "Account settings were successfully changed."
     confirm_email:
       confirmed: "You are awesome. Your email is confirmed."
+    destroy:
+      account_deleted: "Your account has been deleted."

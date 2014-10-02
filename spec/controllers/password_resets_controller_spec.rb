@@ -29,8 +29,7 @@ RSpec.describe PasswordResetsController, type: :controller do
 
   describe "GET edit" do
     it "redirects to the login path if it doesn't find the user" do
-      get :edit, id: SecureRandom.hex(10)
-      expect(response).to redirect_to(login_path)
+      expect { get :edit, id: SecureRandom.hex(10) }.to raise_error(ActiveRecord::RecordNotFound)
     end
 
     it "shows the password-reset form" do
@@ -44,9 +43,7 @@ RSpec.describe PasswordResetsController, type: :controller do
 
   describe "PATCH update" do
     it "redirects to the login path with no message the token is invalid" do
-      patch :update, id: SecureRandom.hex(10)
-      expect(response).to redirect_to(login_path)
-      expect(flash).to be_empty
+      expect { patch :update, id: SecureRandom.hex(10) }.to raise_error(ActiveRecord::RecordNotFound)
     end
 
     it "resets the user's password" do

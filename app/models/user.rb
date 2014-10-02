@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
   validates_inclusion_of    :role, in: ROLES
 
   ROLES.each do |r|
-    define_method "is_#{r}?" do
+    define_method "#{r}?" do
       role.to_s == r
     end
   end
@@ -31,7 +31,11 @@ class User < ActiveRecord::Base
 private
 
   def assign_default_role
-    self.role = 'registered'
+    self.role = if email.present?
+                  'registered'
+                else
+                  'guest'
+                end
   end
 
   def old_password_must_be_correct

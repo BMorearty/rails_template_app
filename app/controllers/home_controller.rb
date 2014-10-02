@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-  skip_filter :require_login, only: [ :index ]
+  skip_before_action :require_login, only: [ :index ]
 
   def index
   end

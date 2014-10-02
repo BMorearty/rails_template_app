@@ -1,14 +1,10 @@
 class UsersController < ApplicationController
-  skip_before_filter :require_login, only: [ :new, :create ]
-  before_filter :find_users, only: :index
-  before_filter :find_user, only: [ :show, :edit, :update, :destroy ]
-  before_filter :new_user, only: [ :new, :create ]
-
-  # GET /users
-  def index
-  end
+  skip_before_action :require_login, only: [ :new, :create, :confirm_email ]
+  before_action :find_user, only: [ :show, :edit, :update, :destroy ]
+  before_action :new_user, only: [ :new, :create ]
 
   # GET /users/1
+  # GET /users/current
   def show
   end
 
@@ -41,7 +37,9 @@ class UsersController < ApplicationController
   end
 
   # PUT /users/1
+  # PUT /users/current
   # PUT /users/1/update_password
+  # PUT /users/current/update_password
   def update
     if @user.update_attributes(user_params)
       notice = params[:edit_password] ? t('users.update.changed_password') : t('users.update.changed')
@@ -52,10 +50,12 @@ class UsersController < ApplicationController
   end
 
   # DELETE /users/1
+  # DELETE /users/current
   def destroy
-    clear_user_cookies if @user == current_user
+    clear_user_cookies
+    logout
     @user.destroy
-    redirect_to users_url
+    redirect_to root_path, notice: t('users.destroy.account_deleted')
   end
 
   # GET /accounts/users/:id/confirm_email?activation_token=abcd123
@@ -69,7 +69,7 @@ class UsersController < ApplicationController
       path = logged_in? ? root_path : login_path(email: @user.email)
       redirect_to path, notice: t('users.confirm_email.confirmed')
     else
-      not_authenticated
+      not_found
     end
   end
 
@@ -77,16 +77,12 @@ class UsersController < ApplicationController
 
   def find_user
     @user ||= current_user if current_user && params[:id] == 'current' || params[:id] == current_user.id.to_s
-    head :not_found unless @user
+    not_found unless @user
   end
 
   def new_user
     @user ||= User.new(user_params) if params[:user]
     @user ||= User.new
-  end
-
-  def find_users
-    @users ||= User.all
   end
 
   def user_params
