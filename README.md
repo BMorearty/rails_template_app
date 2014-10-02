@@ -2,7 +2,7 @@
 
 1. Run this command from the directory *above* rails_template_app:
 
-    rails_template_app/script/copy_into_new_app.rb APP_NAME
+    rails_template_app/bin/copy_into_new_app.rb APP_NAME
 
    The new app will be created in a folder at the same level as
    rails_template_app.
@@ -16,7 +16,3 @@
 
 * Blah blah,
 * and blah blah
-
-# To do:
-
-* Reset password mailer: https://github.com/NoamB/sorcery/wiki/Reset-password

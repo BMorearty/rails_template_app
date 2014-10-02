@@ -62,7 +62,7 @@ Rails.application.configure do
   # Use a different logger for distributed setups.
   # config.logger = ActiveSupport::TaggedLogging.new(SyslogLogger.new)
 
-  # TODO: Just output straight to STDOUT if deploying to Heroku and using Unicorn.
+  # Just output straight to STDOUT if deploying to Heroku and using Unicorn.
   # This is required because we're using Unicorn: https://github.com/ryanb/cancan/issues/511#issuecomment-3643266
   # http://michaelvanrooijen.com/articles/2011/06/01-more-concurrency-on-a-single-heroku-dyno-with-the-new-celadon-cedar-stack/
   # config.logger = Logger.new(STDOUT)
