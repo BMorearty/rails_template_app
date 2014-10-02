@@ -16,6 +16,12 @@ input[type=submit] {
   &:hover, &:focus {
     background-color: darken($blue, 5%);
   }
+
+  &:disabled {
+    background-color: $grayLight;
+    color: $grayLighter;
+    border-color: $grayLight;
+  }
 }
 
 input[type=button], button, .button {
@@ -25,6 +31,12 @@ input[type=button], button, .button {
 
   &:hover, &:focus {
     background-color: darken($grayLighter, 5%);
+  }
+
+  &:disabled {
+    background-color: $grayLighter;
+    color: $grayLight;
+    border-color: #ccc;
   }
 }
 
