@@ -26,8 +26,8 @@ gem 'uglifier'
 gem 'sdoc'
 
 group :development, :test do
-  gem 'byebug'
   gem 'pry'
+  gem 'pry-byebug'
   gem 'pry-rails'
   gem 'pry-remote'
   gem 'looksee'
