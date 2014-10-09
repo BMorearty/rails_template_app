@@ -26,10 +26,11 @@ describe UserSessionsController, type: :controller do
       assert_equal("Logged out", flash[:notice])
     end
 
-    it "when logged out should fail" do
+    it "when logged out should still allow logging out" do
       logout_user
       get :destroy
-      assert_redirected_to login_path
+      assert_redirected_to root_path
+      assert_equal("Logged out", flash[:notice])
     end
   end
 
